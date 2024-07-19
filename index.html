@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Heeba's Library</h1>
+            <div>
+                <button id="completedbooks">Completed Books</button>
+                <button id="unreadbooks">Unread Books</button>
+                <button id="allbooks">All Books</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <button id="addnewbook">Add New Book</button>
+            <div class="books-container">
+
+            </div>
+        </div>
+    </main>
+
+    <div class="form">
+        <button id="closebutton">X</button>
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" placeholder="Book Title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" placeholder="Author Title">
+        </div>
+        <div>
+            <label for="totalpages">Total Pages</label>
+            <input type="text" name="totalpages" id="totalpages" placeholder="Total Pages">
+        </div>
+        <div id="checkboxcontainer">
+            <label for="checkbox">Tick the button id you have read this book</label>
+            <input type="checkbox" name="checkbox" id="checkbox">
+        </div>
+        <div>
+            <button id="submitbutton">Submit</button>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
