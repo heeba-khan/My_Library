@@ -76,7 +76,7 @@ function resetform(){
     openform.classList.remove('active')
 }
 
-function addBook(){
+function getnewbook(){
     const title=title.value
     const author=author.value
     const pages=pages.value
@@ -219,3 +219,4 @@ booksContainer.addEventListener('click',function(event){
         updateDom()
     }
 })
+
