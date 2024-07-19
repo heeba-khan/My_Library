@@ -115,3 +115,107 @@ function updateDom(){
        })
     }
 }
+
+
+function createBook(){
+    let bookDiv=document.createElement('div')
+    bookDiv.classList.add('book')
+    bookDiv.setAttribute('data-id',bookObject.id)
+
+    // title div
+    let titleDiv=document.createElement('div')
+    let titlePara=document.createElement('p')
+    titlePara.textContent='Book Title'
+    let titleHeading=document.createElement('h2')
+    titleHeading.textContent=bookObject.title
+
+    titlePara.classList.add('sub-heading')
+    titleHeading.classList.add('heading')
+    titleDiv.appendChild(titlePara)
+    titleDiv.appendChild(titleHeading)
+
+
+    // author div
+    let authorDiv=document.createElement('div')
+    let authorPara=document.createElement('p')
+    authorPara.textContent='Book Author'
+    let authorHeading=document.createElement('h2')
+    authorHeading.textContent=bookObject.author
+
+    authorPara.classList.add('sub-heading')
+    authorHeading.classList.add('heading')
+    authorDiv.appendChild(authorPara)
+    authorDiv.appendChild(authorHeading)
+
+    // pages div
+    let pageDiv=document.createElement('div')
+    let pagePara=document.createElement('p')
+    pagePara.textContent='No. of Pages'
+    let pageHeading=document.createElement('h2')
+    pageHeading.textContent=bookObject.pages
+
+    pagePara.classList.add('sub-heading')
+    pageHeading.classList.add('heading')
+    pageDiv.appendChild(pagePara)
+    pageDiv.appendChild(pageHeading)
+
+    // status div
+    let statusDiv=document.createElement('div')
+    let statusPara=document.createElement('p')
+    statusPara.textContent='Status'
+    let statusButton=document.createElement('button')
+    statusPara.classList.add('sub-heading')
+    statusButton.classList.add('status')
+    statusButton.classList.add('changeStatus')
+    statusButton.textContent=bookObject.haveRead?'Read':'Unread'
+    if(bookObject.haveRead===true){
+        statusButton.classList.add('read')
+    }
+    else{
+        statusButton.classList.add('unread')
+    }
+    statusDiv.appendChild(statusPara)
+    statusDiv.appendChild(statusButton)
+
+    // remove book button
+    let removeBook=document.createElement('button')
+    removeBook.classList.add('removebook')
+    removeBook.textContent='Remove Book'
+
+    bookDiv.appendChild(titleDiv)
+    bookDiv.appendChild(authorDiv)
+    bookDiv.appendChild(statusDiv)
+    bookDiv.appendChild(pageDiv)
+    bookDiv.appendChild(removeBook)
+
+
+    booksContainer.appendChild(bookDiv)
+}
+
+booksContainer.addEventListener('click',function(event){
+
+    if(event.target.classList.contains('removeBook')){
+        let choice=confirm('Are you sure you want to remove this book?')
+
+        if(choice)
+        {
+            let parent=event.target.closest('.book')
+            let id=parent.getAttribute('data-id')
+            const index=myLibrary.findIndex(book=>book.id===id)
+
+            if(index!==-1)
+            {
+                myLibrary.splice(index,1);
+            }
+            updateDom();
+        }
+    }
+    if(event.target.classList.contains('changeStatus')){
+        let parent=event.target.classList.closest('.book')
+        let id=parent.getAttribute('data-id')
+        let book=myLibrary.find(book=>book.id===id)
+        book.haveRead=!book.haveRead
+
+        updateDom()
+    }
+})
