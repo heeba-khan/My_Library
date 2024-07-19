@@ -5,10 +5,10 @@ const addBook=document.querySelector('#addnewbook')
 const booksContainer=document.querySelector('.books-container')
 const form=document.querySelector('.form')
 const closeform=document.querySelector('#closebutton')
-const title=document.querySelector('#title')
-const author=document.querySelector('#author')
-const pages=document.querySelector('#totalpages')
-const checkbox=document.querySelector('#checkbox')
+const title1=document.querySelector('#title')
+const author1=document.querySelector('#author')
+const pages1=document.querySelector('#totalpages')
+const checkbox1=document.querySelector('#checkbox')
 const submitbutton=document.querySelector('#submitbutton')
 
 allBook.classList.add('buttonActive')
@@ -60,6 +60,8 @@ function generateId(){
     return '_'+Math.random().toString(36).substring(2,9);
 }
 
+
+
 submitbutton.addEventListener('click',function(){
     let bookObject=getnewbook()
     myLibrary.push(bookObject)
@@ -69,18 +71,18 @@ submitbutton.addEventListener('click',function(){
 })
 
 function resetform(){
-    title.value=''
-    author.value=''
-    pages.value=''
-    checkbox.checked=false
-    openform.classList.remove('active')
+    title1.value=''
+    author1.value=''
+    pages1.value=''
+    checkbox1.checked=false
+    form.classList.remove('active')
 }
 
 function getnewbook(){
-    const title=title.value
-    const author=author.value
-    const pages=pages.value
-    const haveRead=checkbox.checked
+    let title=title1.value
+    let author=author1.value
+    let pages=pages1.value
+    let haveRead=checkbox1.checked
 
     let bookObject=new Book(generateId(),title,author,pages,haveRead)
     return bookObject
@@ -117,7 +119,7 @@ function updateDom(){
 }
 
 
-function createBook(){
+function createBook(bookObject){
     let bookDiv=document.createElement('div')
     bookDiv.classList.add('book')
     bookDiv.setAttribute('data-id',bookObject.id)
@@ -184,8 +186,8 @@ function createBook(){
 
     bookDiv.appendChild(titleDiv)
     bookDiv.appendChild(authorDiv)
-    bookDiv.appendChild(statusDiv)
     bookDiv.appendChild(pageDiv)
+    bookDiv.appendChild(statusDiv)
     bookDiv.appendChild(removeBook)
 
 
@@ -194,7 +196,7 @@ function createBook(){
 
 booksContainer.addEventListener('click',function(event){
 
-    if(event.target.classList.contains('removeBook')){
+    if(event.target.classList.contains('removebook')){
         let choice=confirm('Are you sure you want to remove this book?')
 
         if(choice)
@@ -211,7 +213,7 @@ booksContainer.addEventListener('click',function(event){
         }
     }
     if(event.target.classList.contains('changeStatus')){
-        let parent=event.target.classList.closest('.book')
+        let parent=event.target.closest('.book')
         let id=parent.getAttribute('data-id')
         let book=myLibrary.find(book=>book.id===id)
         book.haveRead=!book.haveRead

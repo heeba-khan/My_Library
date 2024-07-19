@@ -9,7 +9,7 @@ body{
 }
 
 header{
-    height: 20vh;
+    height: 10vh;
     width: 100%;
     background-color: #FFA38F;
 }
@@ -61,7 +61,7 @@ header .container div button{
 
 main{
     width: 100%;
-    min-height: calc(100vh-20vh);
+    min-height: calc(100vh-10vh);
     padding-top: 1rem;
     transition: filter 0.3s ease;
 }
@@ -97,25 +97,30 @@ main .container #addnewbook{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    border-radius: 5px;
     transition: box-shadow 0.6s ease;
 }
 
-.book div  button
+.book div button
 {
     padding: 1.5vh 1vw;
+    margin-left: 1rem;
     font-size: larger;
     margin-top: .5rem;
 }
-
+.book p.sub-heading{
+    margin-left: 1rem;
+} 
 .book h2.heading 
 {
+    margin-left: 1rem;
     text-transform: capitalize;
     word-wrap: break-word;
     white-space:wrap;
 }
 
 
-.book button.removeBook 
+.book button.removebook 
 {
     font-size: large;
     width: fit-content;
@@ -124,7 +129,10 @@ main .container #addnewbook{
     border: 2px solid #973131;
     background-color: #FFD18E;
     color: var(--text-color);
-    /* box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.5); */
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.5);
 }
 
 .book div button.status 
@@ -140,7 +148,7 @@ main .container #addnewbook{
 .book div button.status.unread
 {
    
-    background-color: var(--text-color);
+    background-color: gray;
     color: black;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
 }
@@ -155,6 +163,7 @@ main .container #addnewbook{
 div.form
 {
     position:absolute;
+    margin-top: 2.5rem;
     bottom: 0;
     height: 0;
     display: none;
@@ -164,19 +173,16 @@ div.form
     
 }
 
-div.form #closeButton 
+div.form #closebutton 
 {
     position:absolute;
     right: 1.5vw;
     top: 1.2vh;
     padding: 1vh 1vw;
-
-    background-color: #FFA38F;
-    color: gray;
+    background-color: #FFBB70;
+    color: black;
     border: 1px solid #973131;
     transition: transform 0.2s linear;
-
-    
 }
 
 div.form #closeButton:hover
@@ -239,7 +245,7 @@ div.form.active div input:active,div.form.active div input:focus
     border: 3px solid #973131;
 }
 
-div.form.active #checkboxContainer 
+div.form.active #checkboxcontainer 
 {
     
     display: grid;
@@ -247,16 +253,17 @@ div.form.active #checkboxContainer
     align-items: center;
 }
 
-div.form #submitButton 
+div.form #submitbutton
 {
     width: fit-content;
     padding: 1.5vh 2vw;
     margin: 0 auto;
     font-size: large;
     border-radius: 5px;
-    color: var(--text-color);
+    color: black;
     border: 1px solid #973131;
     background-color: #FFBB70;
+    cursor:pointer;
 }
 
 
